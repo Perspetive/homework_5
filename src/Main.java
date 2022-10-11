@@ -1,21 +1,37 @@
 import java.util.Scanner;
 
+class Array{
+    public static void printArray(int[][] array){
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++)
+                System.out.print(array[i][j] + "\t");
+            System.out.println();
+        }
+    }
+
+    public static void Snake_position(int n) {
+        int[][] array = new int[n][n];
+
+        int a = -1;
+        int count = 1;
+        for (int i = 0; i < n; i++) {
+            a *= -1;
+            int start = 0;
+            if (i % 2 != 0) start = n - 1;
+            else start = 0;
+            for (int j = start; (j < n) & (j >= 0); j += a) {
+
+                array[i][j] = count++;
+            }
+        }
+        printArray(array);
+    }
+}
+
 public class Main {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        int n = in.nextInt();
-        int m = in.nextInt();
-        int[][] a = new int[n][m];
-        int i = 0, j = 0;
-        for (int k = 0; k < n * m; ++k, ++j) {
-            if (k != 0 && k % m == 0) {
-                i++;
-                j = 0;
-                System.out.println();
-            }
-
-            a[i][j] = i * j;
-            System.out.print(a[i][j] + "\t");
-        }
+        int array_size = in.nextInt();
+        Array.Snake_position(array_size);
     }
 }
