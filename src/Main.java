@@ -25,7 +25,7 @@ public class Main {
 
         int stb_min = 0;
         int stb_max = m - 1;
-
+        //Проход в разные стороны вврх/вниз/вправо/налево.
         while (num <= max){
             for (int i = stb_min; num <= max && i <=stb_max; i++) {
                 array[str_min][i] = num++;
