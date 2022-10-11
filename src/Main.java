@@ -8,42 +8,30 @@ class Array{
             System.out.println();
         }
     }
+
+    public static void Snake_position(int n) {
+        int[][] array = new int[n][n];
+
+        int a = -1;
+        int count = 1;
+        for (int i = 0; i < n; i++) {
+            a *= -1;
+            int start = 0;
+            if (i % 2 != 0) start = n - 1;
+            else start = 0;
+            for (int j = start; (j < n) & (j >= 0); j += a) {
+
+                array[i][j] = count++;
+            }
+        }
+        printArray(array);
+    }
 }
 
 public class Main {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        int n = in.nextInt();
-        int m = in.nextInt();
-        int[][] array = new int[n][m];
-
-        int max = n * m;
-        int num = 1;
-
-        int str_min = 0;
-        int str_max = n - 1;
-
-        int stb_min = 0;
-        int stb_max = m - 1;
-
-        while (num <= max){
-            for (int i = stb_min; num <= max && i <=stb_max; i++) {
-                array[str_min][i] = num++;
-            }
-            str_min++;
-            for (int i = str_min; num <= max && i <= str_max; i++) {
-                array[i][stb_max] = num++;
-            }
-            stb_max--;
-            for (int i = stb_max; num <= max && i >= stb_min; i--) {
-                array[str_max][i] = num++;
-            }
-            str_max--;
-            for (int i = str_max; num <= max && i >= str_min; i--) {
-                array[i][stb_min] = num++;
-            }
-            stb_min++;
-        }
-        Array.printArray(array);
+        int array_size = in.nextInt();
+        Array.Snake_position(array_size);
     }
 }
